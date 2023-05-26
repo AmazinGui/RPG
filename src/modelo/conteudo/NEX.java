@@ -5,7 +5,7 @@ public class NEX {
     private int NEX;
     private static int PVAdicional;
     private static int ocultismo;
-    private int mental;
+    private static int mental;
 
     private static Nivel nivel;
 
@@ -34,13 +34,24 @@ public class NEX {
 
     public static int calcularOcultismo(int intel, int NEX) {
         if (NEX < 15) {
-            return ocultismo = intel/40;
+            return ocultismo = 0;
         } else if (NEX <= 95) {
-            for (int i=0; i < NEX; i++) {
+            for (int i=0; i <= NEX; i++) {
                 ocultismo = 2*(i/15-1) + intel/40;
             }
             return ocultismo;
         }
         return 12 + intel/40;
+    }
+    public static int calcularMental(int pod, int NEX) {
+        if (NEX < 25) {
+            return mental = 0;
+        } else if (NEX <= 95) {
+            for (int i=0; i <= NEX; i++) {
+                mental = i/25 + pod/40;
+            }
+            return mental;
+        }
+        return 5 + pod/40;
     }
 }
