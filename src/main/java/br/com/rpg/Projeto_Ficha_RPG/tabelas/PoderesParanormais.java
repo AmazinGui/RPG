@@ -48,11 +48,11 @@ public class PoderesParanormais {
         this.requerimento = requerimento;
     }
 
-    public String getEstilo() {
+    public Estilo getEstilo() {
         return estilo;
     }
 
-    public void setEstilo(String estilo) {
+    public void setEstilo(Estilo estilo) {
         this.estilo = estilo;
     }
 
