@@ -1,4 +1,4 @@
-package br.com.rpg.Projeto_Ficha_RPG.conteudo;
+package br.com.rpg.Projeto_Ficha_RPG.conteudo.ficha;
 
 public class NEX {
 
