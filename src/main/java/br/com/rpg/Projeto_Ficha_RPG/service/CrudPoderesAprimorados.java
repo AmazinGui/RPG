@@ -5,13 +5,14 @@ import br.com.rpg.Projeto_Ficha_RPG.repository.PoderesAprimoradosRepository;
 import br.com.rpg.Projeto_Ficha_RPG.tabelas.PoderesAprimorados;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 @Service
 public class CrudPoderesAprimorados {
 
     private PoderesAprimoradosRepository poderesAprimoradosRepository;
-    private PoderesAprimorados poderesAprimorados;
+    private PoderesAprimorados poderesAprimorados = new PoderesAprimorados();
     private Boolean system = true;
 
     public CrudPoderesAprimorados(PoderesAprimoradosRepository poderesAprimoradosRepository) {
@@ -27,25 +28,37 @@ public class CrudPoderesAprimorados {
             System.out.println("2 - Atualizar");
             System.out.println("3 - Visualizar");
             System.out.println("4 - Deletar");
-            int action = scanner.nextInt();
+            int action = Integer.parseInt(scanner.nextLine());
 
             switch (action) {
                 case 1:
                     salvar(scanner);
                     break;
+                case 2:
+                    atualizar(scanner);
+                    break;
+                case 3:
+                    visualizar(scanner);
+                    break;
+                case 4:
+                    deletar(scanner);
+                    break;
+                default:
+                    system = false;
+                    break;
             }
         }
     }
 
-    private void salvar(Scanner scanner) {
+    public void salvar(Scanner scanner) {
         System.out.println("Nome do poder:");
-        String poder = scanner.next();
+        String poder = scanner.nextLine();
 
         System.out.println("Descrição:");
-        String descricao = scanner.next();
+        String descricao = scanner.nextLine();
 
         System.out.println("Requerimento:");
-        String requerimento = scanner.next();
+        String requerimento = scanner.nextLine();
 
         System.out.println("Estilo:");
         Estilo estilo = Estilo.valueOf(scanner.next());
@@ -60,5 +73,25 @@ public class CrudPoderesAprimorados {
         poderesAprimorados.setNex(nex);
         poderesAprimoradosRepository.save(poderesAprimorados);
         System.out.println("Salvo!");
+    }
+
+    public void atualizar(Scanner scanner) {
+        System.out.println("Id do poder:");
+        Integer id = scanner.nextInt();
+
+        salvar(scanner);
+
+    }
+
+    public void visualizar(Scanner scanner) {
+        Iterable<PoderesAprimorados> view = poderesAprimoradosRepository.findAll();
+        view.forEach(System.out::println);
+    }
+
+    public void deletar(Scanner scanner) {
+        System.out.println("Id do poder:");
+        Integer id = scanner.nextInt();
+        poderesAprimoradosRepository.deleteById(id);
+        System.out.println("Deletado!");
     }
 }
