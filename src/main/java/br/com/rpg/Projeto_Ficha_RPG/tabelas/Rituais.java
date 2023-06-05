@@ -13,7 +13,6 @@ public class Rituais {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String ritual;
-    private Elementos elemento;
     private Execucao execucao;
     private Alcance alcance;
     private String duracao;
@@ -33,14 +32,6 @@ public class Rituais {
 
     public void setRitual(String ritual) {
         this.ritual = ritual;
-    }
-
-    public Elementos getElemento() {
-        return elemento;
-    }
-
-    public void setElemento(Elementos elemento) {
-        this.elemento = elemento;
     }
 
     public Execucao getExecucao() {
@@ -80,7 +71,6 @@ public class Rituais {
         return "Rituais{" +
                 "id=" + id +
                 ", ritual='" + ritual + '\'' +
-                ", elemento=" + elemento +
                 ", execucao=" + execucao +
                 ", alcance=" + alcance +
                 ", duracao='" + duracao + '\'' +
