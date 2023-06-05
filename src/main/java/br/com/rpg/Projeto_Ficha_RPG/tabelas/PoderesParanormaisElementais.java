@@ -15,7 +15,6 @@ public class PoderesParanormaisElementais {
     private String descricao;
     private Integer requerimento;
     private Estilo estilo;
-    private Elementos elemento;
 
     public Integer getId() {
         return id;
@@ -57,14 +56,6 @@ public class PoderesParanormaisElementais {
         this.estilo = estilo;
     }
 
-    public Elementos getElemento() {
-        return elemento;
-    }
-
-    public void setElemento(Elementos elemento) {
-        this.elemento = elemento;
-    }
-
     @Override
     public String toString() {
         return "PoderesParanormaisElementais{" +
@@ -73,7 +64,6 @@ public class PoderesParanormaisElementais {
                 ", descricao='" + descricao + '\'' +
                 ", requerimento=" + requerimento +
                 ", estilo=" + estilo +
-                ", elemento=" + elemento +
                 '}';
     }
 }

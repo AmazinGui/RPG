@@ -28,7 +28,8 @@ public class CrudPoderesAprimorados {
             System.out.println("2 - Atualizar");
             System.out.println("3 - Visualizar");
             System.out.println("4 - Deletar");
-            int action = Integer.parseInt(scanner.nextLine());
+
+            Integer action = Integer.parseInt(scanner.nextLine());
 
             switch (action) {
                 case 1:
@@ -38,7 +39,7 @@ public class CrudPoderesAprimorados {
                     atualizar(scanner);
                     break;
                 case 3:
-                    visualizar(scanner);
+                    visualizar();
                     break;
                 case 4:
                     deletar(scanner);
@@ -46,7 +47,7 @@ public class CrudPoderesAprimorados {
                 default:
                     system = false;
                     break;
-            }
+                }
         }
     }
 
@@ -61,29 +62,26 @@ public class CrudPoderesAprimorados {
         String requerimento = scanner.nextLine();
 
         System.out.println("Estilo:");
-        Estilo estilo = Estilo.valueOf(scanner.next());
-
-        System.out.println("NEX do poder:");
-        Integer nex = scanner.nextInt();
+        Estilo estilo = Estilo.valueOf(scanner.nextLine());
 
         poderesAprimorados.setPoder(poder);
         poderesAprimorados.setDescricao(descricao);
         poderesAprimorados.setRequerimento(requerimento);
         poderesAprimorados.setEstilo(estilo);
-        poderesAprimorados.setNex(nex);
         poderesAprimoradosRepository.save(poderesAprimorados);
         System.out.println("Salvo!");
     }
 
     public void atualizar(Scanner scanner) {
         System.out.println("Id do poder:");
-        Integer id = scanner.nextInt();
+        Integer id = Integer.parseInt(scanner.nextLine());
+        poderesAprimorados.setId(id);
 
         salvar(scanner);
 
     }
 
-    public void visualizar(Scanner scanner) {
+    public void visualizar() {
         Iterable<PoderesAprimorados> view = poderesAprimoradosRepository.findAll();
         view.forEach(System.out::println);
     }

@@ -14,7 +14,6 @@ public class PoderesAprimorados {
     private String descricao;
     private String requerimento;
     private Estilo estilo;
-    private Integer nex;
 
     public Integer getId() {
         return id;
@@ -56,14 +55,6 @@ public class PoderesAprimorados {
         this.estilo = estilo;
     }
 
-    public Integer getNex() {
-        return nex;
-    }
-
-    public void setNex(Integer nex) {
-        this.nex = nex;
-    }
-
     @Override
     public String toString() {
         return "PoderesAprimorados{" +
@@ -71,8 +62,7 @@ public class PoderesAprimorados {
                 ", poder='" + poder + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", requerimento='" + requerimento + '\'' +
-                ", estilo='" + estilo + '\'' +
-                ", nex=" + nex +
+                ", estilo='" + estilo +
                 '}';
     }
 }

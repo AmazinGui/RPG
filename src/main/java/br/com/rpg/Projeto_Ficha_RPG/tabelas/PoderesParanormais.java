@@ -14,7 +14,6 @@ public class PoderesParanormais {
     private String descricao;
     private String requerimento;
     private Estilo estilo;
-    private Integer nex;
 
     public Integer getId() {
         return id;
@@ -56,23 +55,14 @@ public class PoderesParanormais {
         this.estilo = estilo;
     }
 
-    public Integer getNex() {
-        return nex;
-    }
-
-    public void setNex(Integer nex) {
-        this.nex = nex;
-    }
-
     @Override
     public String toString() {
-        return "PoderesAprimorados{" +
+        return "PoderesParanormais{" +
                 "id=" + id +
                 ", poder='" + poder + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", requerimento='" + requerimento + '\'' +
-                ", estilo='" + estilo + '\'' +
-                ", nex=" + nex +
+                ", estilo='" + estilo +
                 '}';
     }
 }
