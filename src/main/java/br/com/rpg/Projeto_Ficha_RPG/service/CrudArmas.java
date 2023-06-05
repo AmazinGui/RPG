@@ -68,6 +68,9 @@ public class CrudArmas {
         System.out.println("Alcance:");
         Alcance alcance = Alcance.valueOf(scanner.nextLine());
 
+        System.out.println("Munição:");
+        String municao = scanner.nextLine();
+
         System.out.println("Dano:");
         String dano = scanner.nextLine();
 
@@ -78,6 +81,7 @@ public class CrudArmas {
         armas.setCategoria(categoria);
         armas.setSubcategoria(subcategoria);
         armas.setAlcance(alcance);
+        armas.setMunicao(municao);
         armas.setDano(dano);
         armas.setDetalhe(detalhe);
         armasRepository.save(armas);
