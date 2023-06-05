@@ -10,6 +10,7 @@ import br.com.rpg.Projeto_Ficha_RPG.tabelas.Armas;
 import br.com.rpg.Projeto_Ficha_RPG.tabelas.PoderesAprimorados;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -23,7 +24,7 @@ public class CrudArmas {
         this.armasRepository = armasRepository;
     }
 
-    public void iniciar(Scanner scanner) throws Exception {
+    public void iniciar(Scanner scanner) {
 
         while (system) {
             System.out.println("Qual ação gostaria de executar?");
@@ -43,7 +44,7 @@ public class CrudArmas {
                     atualizar(scanner);
                     break;
                 case 3:
-                    visualizar();
+                    visualizar(scanner);
                     break;
                 case 4:
                     deletar(scanner);
@@ -96,9 +97,39 @@ public class CrudArmas {
         salvar(scanner);
     }
 
-    public void visualizar() {
-        Iterable<Armas> view = armasRepository.findAll();
-        view.forEach(System.out::println);
+    public void visualizar(Scanner scanner) {
+        Boolean visual = true;
+        while (visual) {
+            System.out.println("Como você gostaria de visualizar?");
+            System.out.println("0 - Sair");
+            System.out.println("1 - Todos");
+            System.out.println("2 - Busca");
+
+            Integer action = Integer.parseInt(scanner.nextLine());
+
+            switch (action) {
+                case 1:
+                    Iterable<Armas> view = armasRepository.findAll();
+                    view.forEach(System.out::println);
+                    break;
+                case 2:
+                    visualizarBusca(scanner);
+                    break;
+                default:
+                    visual = false;
+                    break;
+            }
+        }
+
+    }
+
+    public void visualizarBusca(Scanner scanner) {
+        System.out.println("Buscar por:");
+        String parametro = scanner.nextLine();
+        System.out.println("Valor:");
+        String valor = scanner.nextLine();
+        List<Armas> list = armasRepository.findBy(parametro, valor);
+        list.forEach(System.out::println);
     }
 
     public void deletar(Scanner scanner) {
