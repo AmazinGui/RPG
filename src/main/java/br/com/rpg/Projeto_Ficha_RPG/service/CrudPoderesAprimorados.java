@@ -2,9 +2,11 @@ package br.com.rpg.Projeto_Ficha_RPG.service;
 
 import br.com.rpg.Projeto_Ficha_RPG.conteudo.tabelas.Estilo;
 import br.com.rpg.Projeto_Ficha_RPG.repository.PoderesAprimoradosRepository;
+import br.com.rpg.Projeto_Ficha_RPG.tabelas.Armas;
 import br.com.rpg.Projeto_Ficha_RPG.tabelas.PoderesAprimorados;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -39,7 +41,7 @@ public class CrudPoderesAprimorados {
                     atualizar(scanner);
                     break;
                 case 3:
-                    visualizar();
+                    visualizar(scanner);
                     break;
                 case 4:
                     deletar(scanner);
@@ -81,9 +83,36 @@ public class CrudPoderesAprimorados {
 
     }
 
-    public void visualizar() {
-        Iterable<PoderesAprimorados> view = poderesAprimoradosRepository.findAll();
-        view.forEach(System.out::println);
+    public void visualizar(Scanner scanner) {
+        Boolean visual = true;
+        while (visual) {
+            System.out.println("Como você gostaria de visualizar?");
+            System.out.println("0 - Sair");
+            System.out.println("1 - Todos");
+            System.out.println("2 - Estilo");
+
+            Integer action = Integer.parseInt(scanner.nextLine());
+
+            switch (action) {
+                case 1:
+                    Iterable<PoderesAprimorados> view = poderesAprimoradosRepository.findAll();
+                    view.forEach(System.out::println);
+                    break;
+                case 2:
+                    visualizarEstilo(scanner);
+                    break;
+                default:
+                    visual = false;
+                    break;
+            }
+        }
+    }
+
+    public void visualizarEstilo(Scanner scanner) {
+        System.out.println("Estilo a buscar:");
+        Estilo estilo = Estilo.valueOf(scanner.nextLine());
+        List<PoderesAprimorados> list = poderesAprimoradosRepository.findByEstilo(estilo);
+        list.forEach(System.out::println);
     }
 
     public void deletar(Scanner scanner) {

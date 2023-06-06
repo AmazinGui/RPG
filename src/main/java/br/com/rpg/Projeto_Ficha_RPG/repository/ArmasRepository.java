@@ -6,6 +6,7 @@ import br.com.rpg.Projeto_Ficha_RPG.tabelas.Armas;
 import br.com.rpg.Projeto_Ficha_RPG.tabelas.PoderesAprimorados;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,6 +14,6 @@ import java.util.List;
 @Repository
 public interface ArmasRepository extends CrudRepository<Armas, Integer> {
 
-    @Query("SELECT p FROM Armas p WHERE p.?1 = :?2")
-    List<Armas> findBy(String parametro, String valor);
+    List<Armas> findByCategoria(CategoriaDeArma categoriaDeArma);
+    List<Armas> findBySubcategoria(SubcategoriaDeArma subcategoriaDeArma);
 }

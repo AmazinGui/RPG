@@ -103,7 +103,8 @@ public class CrudArmas {
             System.out.println("Como você gostaria de visualizar?");
             System.out.println("0 - Sair");
             System.out.println("1 - Todos");
-            System.out.println("2 - Busca");
+            System.out.println("2 - Categoria");
+            System.out.println("3 - Subcategoria");
 
             Integer action = Integer.parseInt(scanner.nextLine());
 
@@ -113,7 +114,10 @@ public class CrudArmas {
                     view.forEach(System.out::println);
                     break;
                 case 2:
-                    visualizarBusca(scanner);
+                    visualizarCategoria(scanner);
+                    break;
+                case 3:
+                    visualizarSubcategoria(scanner);
                     break;
                 default:
                     visual = false;
@@ -123,12 +127,17 @@ public class CrudArmas {
 
     }
 
-    public void visualizarBusca(Scanner scanner) {
-        System.out.println("Buscar por:");
-        String parametro = scanner.nextLine();
-        System.out.println("Valor:");
-        String valor = scanner.nextLine();
-        List<Armas> list = armasRepository.findBy(parametro, valor);
+    public void visualizarCategoria(Scanner scanner) {
+        System.out.println("Categoria a buscar:");
+        CategoriaDeArma categoria = CategoriaDeArma.valueOf(scanner.nextLine());
+        List<Armas> list = armasRepository.findByCategoria(categoria);
+        list.forEach(System.out::println);
+    }
+
+    public void visualizarSubcategoria(Scanner scanner) {
+        System.out.println("Subcategoria a buscar:");
+        SubcategoriaDeArma categoria = SubcategoriaDeArma.valueOf(scanner.nextLine());
+        List<Armas> list = armasRepository.findBySubcategoria(categoria);
         list.forEach(System.out::println);
     }
 
