@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Poderes_Paranormais")
+@Embeddable
 public class PoderesParanormais {
 
     @Id

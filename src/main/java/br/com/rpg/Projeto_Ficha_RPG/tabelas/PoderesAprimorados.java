@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Poderes_Aprimorados")
+@Embeddable
 public class PoderesAprimorados {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
     private String poder;
     private String descricao;
     private String requerimento;

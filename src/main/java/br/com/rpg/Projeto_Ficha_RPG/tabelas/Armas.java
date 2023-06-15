@@ -7,11 +7,13 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
+@Embeddable
 public class Armas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
     private String arma;
     private CategoriaDeArma categoria;
     private SubcategoriaDeArma subcategoria;
@@ -19,6 +21,12 @@ public class Armas {
     private String municao;
     private String dano;
     private String detalhe;
+
+    public Armas() {}
+
+    public Armas(String arma) {
+        this.arma = arma;
+    }
 
     public Integer getId() {
         return id;

@@ -16,15 +16,17 @@ public class ProjetoFichaRpgApplication implements CommandLineRunner {
 	private CrudPoderesParanormais crudPoderesParanormais;
 	private CrudArmas crudArmas;
 	private CrudRituais crudRituais;
+	private	CrudPersonagem crudPersonagem;
 	private Boolean system = true;
 
 	public ProjetoFichaRpgApplication(CrudPoderesAprimorados crudPoderesAprimorados, CrudPoderesParanormais crudPoderesParanormais,
-									  CrudArmas crudArmas, CrudRituais crudRituais, CrudNEX crudNEX) {
+									  CrudArmas crudArmas, CrudRituais crudRituais, CrudNEX crudNEX, CrudPersonagem crudPersonagem) {
 		this.crudPoderesAprimorados = crudPoderesAprimorados;
 		this.crudPoderesParanormais = crudPoderesParanormais;
 		this.crudArmas = crudArmas;
 		this.crudRituais = crudRituais;
 		this.crudNEX = crudNEX;
+		this.crudPersonagem = crudPersonagem;
 	}
 
 	public static void main(String[] args) {
@@ -40,7 +42,7 @@ public class ProjetoFichaRpgApplication implements CommandLineRunner {
 			System.out.println("2 - Poderes Paranormais");
 			System.out.println("3 - Armas");
 			System.out.println("4 - Rituais");
-			System.out.println("5 - NEX");
+			System.out.println("5 - Personagem");
 
 			Scanner scanner = new Scanner(System.in);
 			String input = scanner.nextLine();
@@ -61,7 +63,7 @@ public class ProjetoFichaRpgApplication implements CommandLineRunner {
 						crudRituais.iniciar(scanner);
 						break;
 					case 5:
-						crudNEX.iniciar(scanner);
+						crudPersonagem.iniciar(scanner);
 						break;
 					default:
 						system = false;

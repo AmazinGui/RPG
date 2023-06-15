@@ -6,7 +6,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Optional;
+
 public interface PoderesParanormaisRepository extends CrudRepository<PoderesParanormais, Integer> {
 
-    PoderesParanormais findByPoder(String nome);
+    Optional<PoderesParanormais> findByPoder(String nome);
 }

@@ -6,9 +6,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PoderesAprimoradosRepository extends CrudRepository<PoderesAprimorados, Integer> {
 
+    Optional<PoderesAprimorados> findByPoder(String poder);
     List<PoderesAprimorados> findByEstilo(Estilo estilo);
 }
