@@ -1,11 +1,10 @@
 package br.com.rpg.Projeto_Ficha_RPG.repository;
 
-import br.com.rpg.Projeto_Ficha_RPG.tabelas.Personagem;
-import org.springframework.data.repository.CrudRepository;
+import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosPersonagem;
+import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.Personagem;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface PersonagemRepository extends CrudRepository<Personagem, Integer> {
+public interface PersonagemRepository extends JpaRepository<Personagem, Integer> {
 }
