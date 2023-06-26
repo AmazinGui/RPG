@@ -1,13 +1,16 @@
 package br.com.rpg.Projeto_Ficha_RPG.domain.personagm;
 
+import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Nivel;
 import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Patente;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Embeddable
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class InformacoesAgente {
@@ -19,7 +22,7 @@ public class InformacoesAgente {
     private String regiao;
     private Boolean status;
     private Patente patente;
-    private String nivel;
+    private Nivel nivel;
 
     public InformacoesAgente(DadosInformacoesAgente dados) {
         this.codinome = dados.codinome();

@@ -4,15 +4,9 @@ import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosListagemPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.Personagem;
 import br.com.rpg.Projeto_Ficha_RPG.repository.PersonagemRepository;
-import jakarta.transaction.TransactionScoped;
-import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -23,11 +17,33 @@ public class PersonagemService {
     private PersonagemRepository repository;
 
     public void criarPersonagem(DadosPersonagem dados) {
-        var personagem = new Personagem(dados);
-        repository.save(personagem);
+        repository.save(new Personagem(dados));
     }
 
-    public List<DadosListagemPersonagem> verPersonagem() {
-        return repository.findAll().stream().map(DadosListagemPersonagem::new).toList();
+    public List<DadosListagemPersonagem> todosPersonagem() {
+        return repository.findAllByInformacoesAgente_StatusTrue().stream().map(DadosListagemPersonagem::new).toList();
+    }
+
+    public DadosListagemPersonagem verPersonagem(String nome) {
+        var personagem = repository.findByInformacoesPessoais_Nome(nome);
+        if (personagem != null) {
+            return new DadosListagemPersonagem(personagem);
+        }
+        return null;
+    }
+
+    public void atualizarPersonagem(DadosPersonagem dados) {
+        var personagem = repository.findByInformacoesPessoais_Nome(dados.informacoesPessoais().nome());
+        if (personagem != null) {
+            BeanUtils.copyProperties(dados, personagem);
+            repository.save(personagem);
+        }
+    }
+
+    public void excluirPersonagem(String nome) {
+        var personagens = repository.findAllByInformacoesPessoais_Nome(nome);
+        for (var personagem : personagens) {
+            personagem.getInformacoesAgente().setStatus(false);
+        }
     }
 }

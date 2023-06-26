@@ -1,5 +1,6 @@
 package br.com.rpg.Projeto_Ficha_RPG.domain.personagm;
 
+import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Nivel;
 import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Patente;
 
 public record DadosListagemPersonagem(
@@ -7,9 +8,8 @@ public record DadosListagemPersonagem(
         String codinome,
         String ocupacao,
         String regiao,
-        Boolean status,
         Patente patente,
-        String nivel) {
+        Nivel nivel) {
 
     public DadosListagemPersonagem(Personagem personagem) {
         this(
@@ -17,7 +17,6 @@ public record DadosListagemPersonagem(
                 personagem.getInformacoesAgente().getCodinome(),
                 personagem.getInformacoesAgente().getOcupacao(),
                 personagem.getInformacoesAgente().getRegiao(),
-                personagem.getInformacoesAgente().getStatus(),
                 personagem.getInformacoesAgente().getPatente(),
                 personagem.getInformacoesAgente().getNivel()
         );
