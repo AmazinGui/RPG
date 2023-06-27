@@ -1,14 +1,16 @@
 package br.com.rpg.Projeto_Ficha_RPG.service;
 
+import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Atualizar;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosListagemPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.Personagem;
 import br.com.rpg.Projeto_Ficha_RPG.repository.PersonagemRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonagemService {
@@ -16,14 +18,12 @@ public class PersonagemService {
     @Autowired
     private PersonagemRepository repository;
 
+    @Transactional
     public void criarPersonagem(DadosPersonagem dados) {
         repository.save(new Personagem(dados));
     }
 
-    public List<DadosListagemPersonagem> todosPersonagem() {
-        return repository.findAllByInformacoesAgente_StatusTrue().stream().map(DadosListagemPersonagem::new).toList();
-    }
-
+    @Transactional(readOnly = true)
     public DadosListagemPersonagem verPersonagem(String nome) {
         var personagem = repository.findByInformacoesPessoais_Nome(nome);
         if (personagem != null) {
@@ -32,18 +32,37 @@ public class PersonagemService {
         return null;
     }
 
+    @Transactional(readOnly = true)
+    public List<DadosListagemPersonagem> listarPersonagens() {
+        var personagens = repository.findAllByInformacoesAgente_StatusTrue();
+        List<DadosListagemPersonagem> lista = personagens.stream()
+                .map(DadosListagemPersonagem::new)
+                .collect(Collectors.toList());
+
+        return lista;
+    }
+
+    @Transactional
     public void atualizarPersonagem(DadosPersonagem dados) {
         var personagem = repository.findByInformacoesPessoais_Nome(dados.informacoesPessoais().nome());
         if (personagem != null) {
-            BeanUtils.copyProperties(dados, personagem);
-            repository.save(personagem);
+            Atualizar novo = new Atualizar();
+            novo.atualizar(dados, personagem);
+            repository.save(novo);
         }
     }
 
+    @Transactional
+    public void ativarPersonagem(String nome) {
+        var personagem = repository.findByInformacoesPessoais_Nome(nome);
+            personagem.getInformacoesAgente().setStatus(true);
+            repository.save(personagem);
+    }
+
+    @Transactional
     public void excluirPersonagem(String nome) {
-        var personagens = repository.findAllByInformacoesPessoais_Nome(nome);
-        for (var personagem : personagens) {
+        var personagem = repository.findByInformacoesPessoais_Nome(nome);
             personagem.getInformacoesAgente().setStatus(false);
-        }
+            repository.save(personagem);
     }
 }

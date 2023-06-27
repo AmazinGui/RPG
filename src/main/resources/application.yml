@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/projeto_rpg_teste
+    url: jdbc:mysql://localhost:3306/projeto_rpg
     username: root
     password: Kaguya10.
   jpa:
