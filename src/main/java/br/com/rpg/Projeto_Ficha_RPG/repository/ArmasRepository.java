@@ -12,4 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface ArmasRepository extends JpaRepository<Armas, Integer> {
+
+
 }

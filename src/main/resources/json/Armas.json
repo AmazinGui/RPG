@@ -1,0 +1,252 @@
+[
+  {
+    "nome": "Martelo",
+    "categoria": "SIMPLES",
+    "subcategoria": "LEVES",
+    "dano": "1d6",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Punhal",
+    "categoria": "SIMPLES",
+    "subcategoria": "LEVES",
+    "dano": "1d4",
+    "detalhe": "(For+Des)"
+  },
+  {
+    "nome": "Soqueira",
+    "categoria": "SIMPLES",
+    "subcategoria": "LEVES",
+    "dano": "+1",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Bastão",
+    "categoria": "SIMPLES",
+    "subcategoria": "UMA_MAO",
+    "dano": "1d6+1",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Cajado",
+    "categoria": "SIMPLES",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "1d8",
+    "detalhe": "(For+Tam)/(For+Des)"
+  },
+  {
+    "nome": "Lança",
+    "categoria": "SIMPLES",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "1d8",
+    "detalhe": "Armadura -2"
+  },
+  {
+    "nome": "Gadanho",
+    "categoria": "SIMPLES",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "1d10",
+    "detalhe": "(For+Des)"
+  },
+  {
+    "nome": "Arco",
+    "categoria": "SIMPLES",
+    "subcategoria": "DISPARO",
+    "alcance": "MEDIO",
+    "dano": "1d8",
+    "detalhe": "Armadura -3"
+  },
+  {
+    "nome": "Besta",
+    "categoria": "SIMPLES",
+    "subcategoria": "DISPARO",
+    "alcance": "CURTO",
+    "municao": "1",
+    "dano": "2d4",
+    "detalhe": "Armadura -3"
+  },
+  {
+    "nome": "Pistola",
+    "categoria": "SIMPLES",
+    "subcategoria": "FOGO",
+    "alcance": "CURTO",
+    "municao": "Cena",
+    "dano": "1d12"
+  },
+  {
+    "nome": "Revolver",
+    "categoria": "SIMPLES",
+    "subcategoria": "FOGO",
+    "alcance": "MEDIO",
+    "municao": "Cena",
+    "dano": "2d8",
+    "detalhe": "Extremo +5"
+  },
+  {
+    "nome": "Escopeta de Mão",
+    "categoria": "SIMPLES",
+    "subcategoria": "FOGO",
+    "alcance": "CURTO",
+    "municao": "Cena",
+    "dano": "3d8",
+    "detalhe": "Distância -2d"
+  },
+  {
+    "nome": "Nunchaku",
+    "categoria": "TATICA",
+    "subcategoria": "LEVES",
+    "dano": "1d6+1",
+    "detalhe": "(For+Des)"
+  },
+  {
+    "nome": "Corrente",
+    "categoria": "TATICA",
+    "subcategoria": "UMA_MAO",
+    "dano": "1d8",
+    "detalhe": "Manobras -5"
+  },
+  {
+    "nome": "Espada",
+    "categoria": "TATICA",
+    "subcategoria": "UMA_MAO",
+    "dano": "1d8+1",
+    "detalhe": "Extremo +5"
+  },
+  {
+    "nome": "Florete",
+    "categoria": "TATICA",
+    "subcategoria": "UMA_MAO",
+    "dano": "1d8+1",
+    "detalhe": "(For+Des)"
+  },
+  {
+    "nome": "Machado",
+    "categoria": "TATICA",
+    "subcategoria": "UMA_MAO",
+    "dano": "2d4+1",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Acha",
+    "categoria": "TATICA",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "1d12+3",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Katana",
+    "categoria": "TATICA",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "1d10+1",
+    "detalhe": "Extremo +5"
+  },
+  {
+    "nome": "Marreta",
+    "categoria": "TATICA",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "3d4+4",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Montante",
+    "categoria": "TATICA",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "2d6+3",
+    "detalhe": "(For+Tam)"
+  },
+  {
+    "nome": "Motossera",
+    "categoria": "TATICA",
+    "subcategoria": "DUAS_MAOS",
+    "dano": "3d6",
+    "detalhe": "Rerrolar 6"
+  },
+  {
+    "nome": "Arco Composto",
+    "categoria": "TATICA",
+    "subcategoria": "DISPARO",
+    "alcance":"LONGO",
+    "dano": "1d10",
+    "detalhe": "Armadura -4"
+  },
+  {
+    "nome": "Balestra",
+    "categoria": "TATICA",
+    "subcategoria": "DISPARO",
+    "alcance":"MEDIO",
+    "municao":"1",
+    "dano": "2d6",
+    "detalhe": "Armadura -4"
+  },
+  {
+    "nome": "Escopeta",
+    "categoria": "TATICA",
+    "subcategoria": "FOGO",
+    "alcance":"CURTO",
+    "municao":"Cena",
+    "dano": "5d8",
+    "detalhe": "Distância -2d"
+  },
+  {
+    "nome": "Rifle de Assalto",
+    "categoria": "TATICA",
+    "subcategoria": "FOGO",
+    "alcance":"MEDIO",
+    "municao":"Cena",
+    "dano": "3d10",
+    "detalhe": "Extremo +5"
+  },
+  {
+    "nome": "Sniper de Caça",
+    "categoria": "TATICA",
+    "subcategoria": "FOGO",
+    "alcance":"LONGO",
+    "municao":"Cena",
+    "dano": "2d12",
+    "detalhe": "Armadura -5"
+  },
+  {
+    "nome": "Submetralhadora",
+    "categoria": "TATICA",
+    "subcategoria": "FOGO",
+    "alcance":"CURTO",
+    "municao":"Cena",
+    "dano": "2d6",
+    "detalhe": "Rajada"
+  },
+  {
+    "nome": "Bazuca",
+    "categoria": "PESADA",
+    "subcategoria": "FOGO",
+    "alcance":"LONGO",
+    "municao":"1",
+    "dano": "10d8"
+  },
+  {
+    "nome": "Lança Chamas",
+    "categoria": "PESADA",
+    "subcategoria": "FOGO",
+    "alcance":"CURTO",
+    "municao":"Cena",
+    "dano": "4d6",
+    "detalhe": "Distância -2d"
+  },
+  {
+    "nome": "Metralhadora",
+    "categoria": "PESADA",
+    "subcategoria": "FOGO",
+    "alcance":"MEDIO",
+    "municao":"Cena",
+    "dano": "5d6",
+    "detalhe": "Rajada"
+  },
+  {
+    "nome": "Sniper",
+    "categoria": "PESADA",
+    "subcategoria": "FOGO",
+    "alcance":"EXTREMO",
+    "municao":"Cena",
+    "dano": "4d12",
+    "detalhe": "Armadura -7"
+  }
+]
