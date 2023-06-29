@@ -4,6 +4,7 @@ import br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte.Atualizar;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosListagemPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.Personagem;
+import br.com.rpg.Projeto_Ficha_RPG.repository.ArmasRepository;
 import br.com.rpg.Projeto_Ficha_RPG.repository.PersonagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,12 @@ public class PersonagemService {
 
     @Autowired
     private PersonagemRepository repository;
+    @Autowired
+    private ArmasRepository armasRepository;
+    @Autowired
+    private Atualizar atualizador;
+    @Autowired
+    private ArmasService armasService;
 
     @Transactional
     public void criarPersonagem(DadosPersonagem dados) {
@@ -46,9 +53,8 @@ public class PersonagemService {
     public void atualizarPersonagem(DadosPersonagem dados) {
         var personagem = repository.findByInformacoesPessoais_Nome(dados.informacoesPessoais().nome());
         if (personagem != null) {
-            Atualizar novo = new Atualizar();
-            novo.atualizar(dados, personagem);
-            repository.save(novo);
+            atualizador.atualizar(dados, personagem);
+            armasService.associarArmaPersonagem(dados, personagem);
         }
     }
 
@@ -60,9 +66,17 @@ public class PersonagemService {
     }
 
     @Transactional
-    public void excluirPersonagem(String nome) {
+    public void desativarPersonagem(String nome) {
         var personagem = repository.findByInformacoesPessoais_Nome(nome);
             personagem.getInformacoesAgente().setStatus(false);
             repository.save(personagem);
+    }
+
+    @Transactional
+    public void excluirPersonagem(String nome) {
+        var personagem = repository.findByInformacoesPessoais_Nome(nome);
+        if (personagem != null){
+            repository.deleteByInformacoesPessoais_Nome(nome);
+        }
     }
 }

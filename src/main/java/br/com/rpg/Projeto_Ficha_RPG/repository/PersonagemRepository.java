@@ -16,7 +16,7 @@ public interface PersonagemRepository extends JpaRepository<Personagem, Integer>
 
     Personagem findByInformacoesPessoais_Nome (String nome);
 
-    List<Personagem> findAllByInformacoesPessoais_Nome (String nome);
-
     List<Personagem> findAllByInformacoesAgente_StatusTrue ();
+
+    void deleteByInformacoesPessoais_Nome(String nome);
 }

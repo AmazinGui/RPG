@@ -13,5 +13,5 @@ import java.util.Optional;
 @Repository
 public interface ArmasRepository extends JpaRepository<Armas, Integer> {
 
-
+    Armas findByNome (String nome);
 }

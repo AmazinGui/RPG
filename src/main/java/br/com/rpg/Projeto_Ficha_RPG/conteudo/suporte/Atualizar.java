@@ -2,10 +2,17 @@ package br.com.rpg.Projeto_Ficha_RPG.conteudo.suporte;
 
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.DadosPersonagem;
 import br.com.rpg.Projeto_Ficha_RPG.domain.personagm.Personagem;
+import br.com.rpg.Projeto_Ficha_RPG.repository.PersonagemRepository;
 import jakarta.persistence.Entity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Entity
-public class Atualizar extends Personagem {
+@Component
+public class Atualizar{
+
+    @Autowired
+    private PersonagemRepository repository;
 
     public void atualizar(DadosPersonagem dados, Personagem personagem) {
         if (dados.informacoesPessoais().nome() != null) {
@@ -62,5 +69,6 @@ public class Atualizar extends Personagem {
         if (dados.informacoesAgente().nivel() != null) {
             personagem.getInformacoesAgente().setNivel(dados.informacoesAgente().nivel());
         }
+        repository.save(personagem);
     }
 }

@@ -5,16 +5,14 @@ import br.com.rpg.Projeto_Ficha_RPG.domain.poderes.PoderesParanormais;
 import br.com.rpg.Projeto_Ficha_RPG.domain.rituais.Rituais;
 import br.com.rpg.Projeto_Ficha_RPG.domain.armas.Armas;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "personagens")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")

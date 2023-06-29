@@ -40,6 +40,11 @@ public class PersonagemController {
         service.ativarPersonagem(nome);
     }
 
+    @DeleteMapping("/desativar")
+    public void desativar(@RequestParam("nome") @Valid String nome) {
+        service.desativarPersonagem(nome);
+    }
+
     @DeleteMapping
     public void deletar(@RequestParam("nome") @Valid String nome) {
         service.excluirPersonagem(nome);
